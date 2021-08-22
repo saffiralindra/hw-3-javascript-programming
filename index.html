@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./bootstrap-5.1.0-dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="./css/style.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+      <title>Temperature Calculator</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+               <i class="bi bi-thermometer-sun"></i>
+               Temperature
+            </a>
+         </div>
+         <!--<div class="container-fluid">
+            <form class="d-flex">
+               <input class="form-control me-lg-2" type="text" placeholder="Background Color" aria-label="Search" id="bgcolor1" />
+               <button onclick="submitted(bgcolor1)">Change</button>
+            </form>
+         </div>-->
+      </nav>
+      <div class="container">
+         <div class="row pt-lg-5">
+            <div class="col-md-6">
+               <img src="./picture/Thermometer.jpg" alt="Foto" />
+            </div>
+            <div class="col-md-6">
+               <h2>Temperature Convertion</h2>
+               <div class="d-flex bd-highlight" onchange="reset()">
+                  <div class="flex-fill bd-highlight">
+                     <select class="form-select" id="temp1">
+                        <option value="Celcius" selected>Celcius</option>
+                        <option value="Farenheit">Farenheit</option>
+                        <option value="Reamur">Reamur</option>
+                     </select>
+                  </div>
+                  <div class="p-2">
+                     <label class="form-label">To</label>
+                  </div>
+                  <div class="flex-fill bd-highlight">
+                     <select class="form-select" id="temp2">
+                        <option value="Celcius" selected>Celcius</option>
+                        <option value="Farenheit">Farenheit</option>
+                        <option value="Reamur">Reamur</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="mb-3">
+                  <input type="text" class="form-control" id="input" placeholder="Number" onkeyup="changed()" />
+               </div>
+               <div>
+                  <label class="form-label">=</label>
+               </div>
+               <div class="mb-3">
+                  <input type="text" class="form-control" id="hasil" placeholder="Result" disabled />
+               </div>
+            </div>
+         </div>
+         <div class="row mt-lg-5 bg-danger">
+            <h5>Change Background Color:</h5>
+            <div>
+               <input type="text" class="form-control" id="bgcolor" placeholder="Color" onkeyup="changed()" />
+            </div>
+            <div class="p-2">
+               <button id="btnsubmit" onclick="submitted(bgcolor)">Change</button>
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="./temp.js"></script>
+   <script>
+      const calc = new Calculate();
+      const input = document.getElementById("input");
+      const hasil = document.getElementById("hasil");
+      const temp1 = document.getElementById("temp1");
+      const temp2 = document.getElementById("temp2");
+      const bgcolor = document.getElementById("bgcolor");
+      //const row = document.getElementById("row");
+      function changed() {
+         hasil.value = calc.cekAngka(input.value);
+         if (temp1.value == temp2.value) {
+            hasil.value = calc.hasilSama(input.value);
+         } else if ((temp1.value == "Celcius") & (temp2.value == "Farenheit")) {
+            hasil.value = calc.celcius_farenheit(input.value);
+         } else if ((temp1.value == "Celcius") & (temp2.value == "Reamur")) {
+            hasil.value = calc.celcius_reamur(input.value);
+         } else if ((temp1.value == "Farenheit") & (temp2.value == "Celcius")) {
+            hasil.value = calc.farenheit_celcius(input.value);
+         } else if ((temp1.value == "Farenheit") & (temp2.value == "Reamur")) {
+            hasil.value = calc.farenheit_reamur(input.value);
+         } else if ((temp1.value == "Reamur") & (temp2.value == "Celcius")) {
+            hasil.value = calc.reamur_celcius(input.value);
+         } else {
+            hasil.value = calc.reamur_farenheit(input.value);
+         }
+      }
+      function submitted(bgcolor) {
+         document.body.style.background = bgcolor.value;
+         //document.body.row.style.background = bgcolor.value;
+      }
+      function reset() {
+         input.value = "";
+         hasil.value = "";
+      }
+   </script>
+   <script src="./bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js" />
+</html>
