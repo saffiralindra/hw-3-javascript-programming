@@ -1,10 +1,10 @@
 class Calculate {
    constructor() {}
-   cekAngka(a) {
+   /*cekAngka(a) {
       if ((a = 0)) {
          return 0;
       }
-   }
+   }*/
    hasilSama(a) {
       return a;
    }
@@ -30,3 +30,5 @@ class Calculate {
       return warna;
    }
 }
+
+module.exports = Calculate;
